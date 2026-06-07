@@ -1,0 +1,292 @@
+@use "breakpoints" as bp;
+
+.app {
+  min-height: 100dvh;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+// --- Nav ---------------------------------------------------------------------
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklch, var(--background) 80%, transparent);
+  backdrop-filter: blur(16px);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 1rem 1.5rem;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__logo {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  &__links {
+    display: none;
+    gap: 2rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+
+    @include bp.md {
+      display: flex;
+    }
+
+    a {
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+// --- Hero --------------------------------------------------------------------
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-hero);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 48rem;
+    margin-inline: auto;
+    padding: 6rem 1.5rem;
+    text-align: center;
+
+    @include bp.md {
+      padding-block: 8rem;
+    }
+  }
+
+  &__logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    width: 8rem;
+    height: 8rem;
+    filter: drop-shadow(0 0 40px oklch(0.78 0.14 75 / 0.5));
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
+    border-radius: var(--radius-full);
+    background: color-mix(in oklch, var(--primary) 5%, transparent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--primary);
+  }
+
+  &__badge-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.05;
+
+    @include bp.md {
+      font-size: 3.75rem;
+    }
+  }
+
+  &__subtitle {
+    max-width: 32rem;
+    margin-inline: auto;
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    color: var(--muted-foreground);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  &__trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+  }
+
+  &__trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      color: var(--primary);
+    }
+
+    &--primary {
+      font-weight: 600;
+      color: var(--primary);
+    }
+  }
+}
+
+// --- Features ----------------------------------------------------------------
+
+.features__grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 4rem;
+
+  @include bp.md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include bp.lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// --- Pricing -----------------------------------------------------------------
+
+.pricing__card-wrap {
+  max-width: 28rem;
+  margin-inline: auto;
+  margin-top: 3rem;
+}
+
+// --- FAQ ---------------------------------------------------------------------
+
+.faq__head {
+  text-align: center;
+}
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+// --- Footer ------------------------------------------------------------------
+
+.footer {
+  border-top: 1px solid var(--border);
+  background: color-mix(in oklch, var(--card) 50%, transparent);
+  padding-block: 3rem;
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+
+    @include bp.md {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__brand {
+    @include bp.md {
+      grid-column: span 2;
+    }
+  }
+
+  &__brand-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__tagline {
+    max-width: 24rem;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+
+  &__col-title {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+
+    a {
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+
+    @include bp.md {
+      flex-direction: row;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// Entry point dos estilos. A ordem importa pro cascade:
+// tokens (variáveis) -> animações -> base/reset -> componentes -> layout.
+
+@use "tokens";
+@use "animations";
+@use "base";
+@use "components";
+@use "layout";

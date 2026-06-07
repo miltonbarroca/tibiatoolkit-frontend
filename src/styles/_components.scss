@@ -1,0 +1,342 @@
+@use "breakpoints" as bp;
+
+// --- Botões ------------------------------------------------------------------
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &--sm {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  &--lg {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.9375rem;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--gold {
+    background: var(--gradient-gold);
+    color: var(--primary-foreground);
+    box-shadow: var(--shadow-gold);
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--outline {
+    border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+    color: var(--foreground);
+    background: transparent;
+
+    &:hover {
+      background: color-mix(in oklch, var(--primary) 10%, transparent);
+    }
+  }
+}
+
+// --- Faixa de trial ----------------------------------------------------------
+
+.trial-banner {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.625rem;
+  background: var(--gradient-gold);
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-foreground);
+
+  &__shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 25%, oklch(1 0 0 / 0.15) 50%, transparent 75%);
+    background-size: 200% 100%;
+  }
+
+  &__text {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+
+// --- Card de recurso ---------------------------------------------------------
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklch, var(--primary) 50%, transparent);
+    box-shadow: var(--shadow-gold);
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    border: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
+    border-radius: var(--radius);
+    background: color-mix(in oklch, var(--primary) 10%, transparent);
+    color: var(--primary);
+    transition: transform 0.2s ease;
+  }
+
+  &:hover &__icon {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  &__desc {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+}
+
+// --- Card de preço -----------------------------------------------------------
+
+.pricing-card {
+  position: relative;
+  padding: 2rem;
+  border: 1px solid color-mix(in oklch, var(--primary) 60%, transparent);
+  border-radius: var(--radius-xl);
+  background: var(--card);
+  box-shadow: var(--shadow-gold);
+  text-align: center;
+
+  &__badge {
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.375rem 1rem;
+      border-radius: var(--radius-full);
+      background: var(--gradient-gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-foreground);
+      box-shadow: var(--shadow-gold);
+
+      svg {
+        width: 0.875rem;
+        height: 0.875rem;
+      }
+    }
+  }
+
+  &__launch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid color-mix(in oklch, var(--primary) 40%, transparent);
+    border-radius: var(--radius-full);
+    background: color-mix(in oklch, var(--primary) 10%, transparent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+
+  &__plan {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+  }
+
+  &__old {
+    font-size: 1rem;
+    color: var(--muted-foreground);
+    text-decoration: line-through;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  &__price {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  &__per {
+    color: var(--muted-foreground);
+  }
+
+  &__note {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+  }
+
+  &__perks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+}
+
+.perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+
+  &--highlight {
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  &__icon {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.125rem;
+    color: var(--primary);
+  }
+}
+
+// --- Caixa de download -------------------------------------------------------
+
+.download {
+  max-width: 42rem;
+  margin-inline: auto;
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--card);
+  text-align: center;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__note {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+}
+
+// --- FAQ ---------------------------------------------------------------------
+
+.faq-item {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+
+  &__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: color-mix(in oklch, var(--secondary) 50%, transparent);
+    }
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    color: var(--primary);
+    transition: transform 0.2s ease;
+
+    &.is-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__a {
+    padding: 0 1.5rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+}

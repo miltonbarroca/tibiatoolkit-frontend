@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/stats/script.js",
+      "destination": "https://tibia-toolkit-production.up.railway.app/stats/script.js"
+    },
+    {
+      "source": "/api/send",
+      "destination": "https://tibia-toolkit-production.up.railway.app/api/send"
+    }
+  ]
+}

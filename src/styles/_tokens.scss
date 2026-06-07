@@ -1,0 +1,33 @@
+// Design tokens — tema dark gold do Tibia Toolkit.
+// Cores em oklch (mantidas como CSS custom properties pra ficarem
+// centralizadas e fáceis de ajustar em runtime).
+
+:root {
+  // Raio de borda
+  --radius: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  // Tipografia
+  --font-display: "Cinzel", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  // Paleta
+  --background: oklch(0.14 0.012 60);
+  --foreground: oklch(0.94 0.02 80);
+  --card: oklch(0.18 0.014 60);
+  --primary: oklch(0.78 0.14 75);
+  --primary-foreground: oklch(0.14 0.012 60);
+  --secondary: oklch(0.22 0.018 65);
+  --muted-foreground: oklch(0.68 0.03 75);
+  --border: oklch(0.32 0.04 70 / 0.5);
+
+  // Gradientes e sombras
+  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.16 82), oklch(0.62 0.14 55));
+  --gradient-hero:
+    radial-gradient(ellipse at top, oklch(0.28 0.06 65 / 0.6), transparent 60%),
+    radial-gradient(ellipse at bottom, oklch(0.18 0.04 50 / 0.4), transparent 70%);
+  --shadow-gold: 0 10px 40px -10px oklch(0.78 0.14 75 / 0.4);
+  --shadow-glow: 0 0 60px oklch(0.78 0.14 75 / 0.25);
+}

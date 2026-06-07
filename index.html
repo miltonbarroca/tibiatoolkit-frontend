@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tibia Toolkit — Cavebot, Auto-Heal e Combate automáticos</title>
+    <meta name="description" content="Automatize cavebot, heal e combate no Tibia. Atualizações constantes, scripts personalizáveis e suporte ativo. R$ 29,90/mês." />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+      Umami first-party: o script e o /api/send sao proxiados pelo proprio dominio
+      (ver vercel.json) -> escapa de adblockers. Sem data-host-url, o tracker envia
+      para a mesma origem (/api/send), que o Vercel reescreve para o backend.
+    -->
+    <script defer src="/stats/script.js" data-website-id="7a0c6424-33b5-4dcb-80db-0e943179e8fe"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
