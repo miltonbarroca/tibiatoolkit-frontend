@@ -8,6 +8,22 @@
     {
       "source": "/api/send",
       "destination": "https://tibia-toolkit-production.up.railway.app/api/send"
+    },
+    {
+      "source": "/documentacao",
+      "destination": "https://tibia-toolkit-production.up.railway.app/documentacao"
+    },
+    {
+      "source": "/termos",
+      "destination": "https://tibia-toolkit-production.up.railway.app/termos"
+    },
+    {
+      "source": "/privacidade",
+      "destination": "https://tibia-toolkit-production.up.railway.app/privacidade"
+    },
+    {
+      "source": "/static/:path*",
+      "destination": "https://tibia-toolkit-production.up.railway.app/static/:path*"
     }
   ]
 }

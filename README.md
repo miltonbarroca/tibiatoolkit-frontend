@@ -54,6 +54,20 @@ adblockers e não precisa de CORS.
 Eventos: cliques de download disparam `download` com `platform: windows|linux`
 (via `data-umami-event`).
 
+## Documentação e páginas do backend
+
+`/documentacao` (e `/termos`, `/privacidade`) são páginas servidas pelo **backend**
+(`backend/static/docs/docs.html` + assets em `/static/docs/`), mantidas lá como fonte
+única. Em vez de duplicar/forkar a doc neste repo, esses caminhos são **proxiados** pro
+Railway:
+
+- **Dev:** `vite.config.ts` → `server.proxy` repassa `/documentacao`, `/termos`,
+  `/privacidade` e `/static` pro `BACKEND`.
+- **Produção:** `vercel.json` → `rewrites` faz o mesmo.
+
+Para pré-visualizar edições locais da doc, suba o backend (`uvicorn main:app --reload`)
+e troque `BACKEND` em `vite.config.ts` para `http://localhost:8000`.
+
 ## Deploy (Vercel)
 
 1. Importar este repo na Vercel (detecta Vite automaticamente; build `npm run build`, output `dist/`).
@@ -62,9 +76,9 @@ Eventos: cliques de download disparam `download` com `platform: windows|linux`
 
 ### Pendências de cutover (quando migrar de vez)
 
-- [ ] **Rotas servidas hoje pelo backend** (`/documentacao`, `/termos`, `/privacidade`):
-      decidir se viram rewrite pro backend no `vercel.json` ou se são reconstruídas aqui.
-      Hoje os links no nav/footer apontam pra esses caminhos.
+- [x] **Rotas servidas pelo backend** (`/documentacao`, `/termos`, `/privacidade`, `/static/*`):
+      já proxiadas pro Railway — `vercel.json` (produção) e `vite.config.ts` `server.proxy`
+      (dev). Fonte única no backend; não duplicamos a doc aqui (ver seção "Documentação").
 - [ ] **Stripe**: atualizar `success_url` / `cancel_url` do Checkout pro novo domínio.
 - [ ] **Backend CORS**: liberar `tibiatoolkit.com.br` se algum fetch passar a bater
       direto na API (o Umami não precisa, pois usa rewrite first-party).
