@@ -3,6 +3,7 @@ import {
   Sword, Heart, Crosshair, RefreshCw, MousePointer2, FileCode2,
   Check, Shield, Download, Play, ChevronDown, Gift, Zap,
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 import logo from "./assets/logo.png";
 
 const BACKEND = "https://tibia-toolkit-production.up.railway.app";
@@ -53,6 +54,7 @@ export default function App() {
       <Pricing />
       <FAQ />
       <Footer />
+      <Analytics />
     </div>
   );
 }
