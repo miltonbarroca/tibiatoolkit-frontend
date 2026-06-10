@@ -39,7 +39,7 @@ CSS custom properties em `_tokens.scss` (oklch), então dá pra ajustar o tema n
 A constante `BACKEND` em `src/App.tsx` aponta os botões de download para a API:
 
 ```ts
-const BACKEND = "https://tibia-toolkit-production.up.railway.app";
+const BACKEND = "https://api.tibiatoolkit.com.br";
 ```
 
 Quando a API mudar de endereço (ex.: `api.tibiatoolkit.com.br`), alterar só aqui.

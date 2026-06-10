@@ -3,27 +3,27 @@
   "rewrites": [
     {
       "source": "/stats/script.js",
-      "destination": "https://tibia-toolkit-production.up.railway.app/stats/script.js"
+      "destination": "https://api.tibiatoolkit.com.br/stats/script.js"
     },
     {
       "source": "/api/send",
-      "destination": "https://tibia-toolkit-production.up.railway.app/api/send"
+      "destination": "https://api.tibiatoolkit.com.br/api/send"
     },
     {
       "source": "/documentacao",
-      "destination": "https://tibia-toolkit-production.up.railway.app/documentacao"
+      "destination": "https://api.tibiatoolkit.com.br/documentacao"
     },
     {
       "source": "/termos",
-      "destination": "https://tibia-toolkit-production.up.railway.app/termos"
+      "destination": "https://api.tibiatoolkit.com.br/termos"
     },
     {
       "source": "/privacidade",
-      "destination": "https://tibia-toolkit-production.up.railway.app/privacidade"
+      "destination": "https://api.tibiatoolkit.com.br/privacidade"
     },
     {
       "source": "/static/:path*",
-      "destination": "https://tibia-toolkit-production.up.railway.app/static/:path*"
+      "destination": "https://api.tibiatoolkit.com.br/static/:path*"
     }
   ]
 }

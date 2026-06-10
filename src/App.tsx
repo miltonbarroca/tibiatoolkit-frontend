@@ -6,7 +6,7 @@ import {
 import { Analytics } from "@vercel/analytics/react";
 import logo from "./assets/logo.png";
 
-const BACKEND = "https://tibia-toolkit-production.up.railway.app";
+const BACKEND = "https://api.tibiatoolkit.com.br";
 
 const features = [
   { icon: Sword,         title: "Cavebot",              desc: "Navegação automática entre waypoints com scripts totalmente personalizáveis." },

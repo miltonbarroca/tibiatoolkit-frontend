@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 // os assets em /static/docs. A doc tem fonte única no backend — não duplicamos
 // aqui. Troque para "http://localhost:8000" se quiser pré-visualizar edições
 // locais da documentação rodando o backend junto.
-const BACKEND = "https://tibia-toolkit-production.up.railway.app";
+const BACKEND = "https://api.tibiatoolkit.com.br";
 
 export default defineConfig({
   plugins: [react()],
