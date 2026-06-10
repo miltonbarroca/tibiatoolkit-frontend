@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentação — Tibia Toolkit</title>
+  <link rel="stylesheet" href="/static/docs/docs.css" />
+</head>
+<body>
+
+<header>
+  <a class="header-logo" href="/">
+    <img src="/static/docs/logo.png" alt="Tibia Toolkit" />
+    <span>Tibia Toolkit</span>
+  </a>
+  <nav>
+    <a href="/">Início</a>
+    <a href="/documentacao" class="active">Documentação</a>
+  </nav>
+</header>
+
+<div class="docs-layout">
+
+  <!-- ── Sidebar esquerda ──────────────────────────────────────── -->
+  <aside class="docs-sidebar">
+    <div class="sidebar-search">
+      <input type="search" id="docs-search" placeholder="Buscar..." autocomplete="off" />
+    </div>
+    <nav class="sidebar-nav" id="docs-sidebar-nav">
+      <div class="nav-section">Documentação</div>
+      <a href="#sec-requisitos" data-target="sec-requisitos">00 · Requisitos mínimos</a>
+      <a href="#sec-windows"    data-target="sec-windows">01 · Windows (OBS)</a>
+      <a href="#sec-detectar"   data-target="sec-detectar">02 · Detectar UI</a>
+      <a href="#sec-interface"  data-target="sec-interface">03 · Interface do Tibia</a>
+      <a href="#sec-scripts"    data-target="sec-scripts">04 · Scripts de hunt</a>
+      <a href="#sec-iniciar"    data-target="sec-iniciar">05 · Iniciar o bot</a>
+      <a href="#sec-alertas"    data-target="sec-alertas">06 · Alertas</a>
+      <a href="#sec-combate"   data-target="sec-combate">07 · Combate</a>
+      <a href="#sec-atalhos"   data-target="sec-atalhos">08 · Atalhos Rápidos</a>
+      <a href="#sec-hotkeys"   data-target="sec-hotkeys">09 · Hotkeys e Healing</a>
+    </nav>
+  </aside>
+
+  <!-- ── Conteúdo principal ────────────────────────────────────── -->
+  <main class="docs-content">
+    <h1 class="page-title">Documentação</h1>
+    <p class="page-subtitle">Guia completo de instalação e uso do Tibia Toolkit</p>
+
+    <!-- SECTION 0 — Requisitos mínimos -->
+    <div class="section" id="sec-requisitos">
+      <div class="section-header">
+        <span class="section-num">00</span>
+        <h2>Requisitos mínimos</h2>
+      </div>
+
+      <p>Antes de instalar o Tibia Toolkit, verifique se sua máquina atende aos requisitos abaixo. Rodar o bot em hardware abaixo do mínimo pode causar lentidão na leitura de tela e comportamento inesperado.</p>
+
+      <table class="req-table">
+        <thead>
+          <tr><th>Requisito</th><th>Mínimo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sistema operacional</td><td>Windows 10 / Ubuntu 20.04 (ou equivalente)</td></tr>
+          <tr><td>CPU</td><td>2 núcleos, 2.0 GHz</td></tr>
+          <tr><td>RAM</td><td>4 GB</td></tr>
+          <tr><td>Resolução</td><td>1366 × 768</td></tr>
+          <tr><td>Internet</td><td>Conexão estável (validação de assinatura)</td></tr>
+          <tr><td>Tibia</td><td>Cliente oficial aberto e <strong>visível na tela</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-warning">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Linux</span>
+          <p>Apenas sessões <strong>X11</strong> são suportadas. Wayland não funciona com captura de tela e simulação de input.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="section" id="sec-windows">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Configuração no Windows (OBS)</h2>
+      </div>
+
+      <div class="tabs" data-tabs>
+        <div class="tab-list" role="tablist">
+          <button class="tab-button active" data-tab="windows" role="tab">Windows</button>
+          <button class="tab-button" data-tab="linux" role="tab">Linux / OTServer</button>
+        </div>
+
+        <div class="tab-panel active" data-panel="windows" role="tabpanel">
+          <p>No Windows existe uma proteção nativa que torna a tela do jogo toda preta para capturas de tela e screen recording. Para que o Tibia Toolkit consiga ler os elementos na tela, é necessário usar uma projeção do OBS com a janela do jogo sobreposta.</p>
+
+          <div class="subsection">
+            <h3>Configurando o OBS WebSocket</h3>
+            <p>No OBS, acesse <span class="highlight">Ferramentas → Configurações do servidor WebSocket</span>:</p>
+            <img src="/static/docs/10000000000002B400000271AD0E8B34.png" alt="Configurações WebSocket OBS" class="doc-img" />
+            <p class="doc-img-caption">Ative o servidor WebSocket e desabilite a autenticação.</p>
+          </div>
+
+          <div class="subsection">
+            <h3>Configurando a aba OBS no Toolkit</h3>
+            <ol class="steps">
+              <li>Com o OBS configurado, abra o Tibia Toolkit e acesse a aba <span class="highlight">OBS</span></li>
+              <li>Clique em <span class="highlight">Verificar conexão</span> para confirmar que o OBS está conectado</li>
+              <li>Clique em <span class="highlight">Configurar .ini</span> (OBS pode estar aberto ou fechado)</li>
+              <li>Com o <strong>OBS e o Tibia abertos</strong>, clique em <span class="highlight">Criar scene/source</span></li>
+              <li>Clique em <span class="highlight">Abrir projeção</span></li>
+            </ol>
+            <p>Isso deixará a janela do Tibia com opacidade 1 — invisível ao olho humano, mas visível para o Tibia Toolkit capturar.</p>
+            <img src="/static/docs/10000001000005FF000004007132383E.png" alt="Projeção OBS configurada" class="doc-img" />
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="linux" role="tabpanel">
+          <div class="callout callout-tip">
+            <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="callout-body">
+              <span class="callout-title">Você pode pular essa seção</span>
+              <p>No Linux (X11) e em servidores OTServer, a captura de tela funciona direto, sem precisar do OBS. Vá direto para a <a href="#sec-detectar">seção 02 · Detectar UI</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section" id="sec-detectar">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Mapeamento da interface (Detectar UI)</h2>
+      </div>
+
+      <p>Antes de iniciar o bot, é necessário mapear os elementos da tela para que o Toolkit saiba onde estão a barra de vida, mana, battle list e minimapa.</p>
+
+      <img src="/static/docs/100000010000015C000000962DAC5C95.png" alt="Interface do Tibia configurada" class="doc-img" />
+      <p class="doc-img-caption">Deixe sua interface do Tibia nessa disposição antes de rodar Detectar UI.</p>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section" id="sec-interface">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Configurando a interface do Tibia</h2>
+      </div>
+
+      <p>Para que o Detectar UI funcione corretamente, configure o Tibia da seguinte forma:</p>
+
+      <div class="subsection">
+        <h3>Minimapa</h3>
+        <p>Deixe o minimapa <span class="highlight">completamente preto</span>. Para isso, role o scroll até o topo dos z-levels (andares do jogo) até não aparecer nenhuma estrutura no mapa.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Battle list</h3>
+        <p>Configure a battle list para mostrar <span class="highlight">apenas monstros</span>, com as opções minimizadas conforme abaixo:</p>
+        <img src="/static/docs/10000000000000AD0000004046B8E87C.png" alt="Configuração da battle list" class="doc-img" />
+      </div>
+
+      <div class="subsection">
+        <h3>Cursor animado</h3>
+        <p>Nas opções do jogo, acesse <span class="highlight">General</span> e desative <span class="highlight">Animated Mouse Cursor</span>. O cursor animado interfere na detecção de flags no minimapa e pode causar falhas na navegação do bot.</p>
+        <img src="/static/docs/configs.png" alt="Desativar Animated Mouse Cursor nas opções do Tibia" class="doc-img" />
+      </div>
+
+      <div class="subsection">
+        <h3>Barras de vida e mana</h3>
+        <p>Nas configurações do jogo, ative <span class="highlight">Show Advanced Options</span>. Em <strong>HUD</strong>, marque <span class="highlight">Show Arcs</span>. Aplique e feche.</p>
+        <img src="/static/docs/10000000000002A3000002247DE638D9.png" alt="Configuração HUD barras" class="doc-img" />
+      </div>
+
+      <div class="callout callout-warning">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Importante</span>
+          <p>Com toda essa configuração visível na tela, volte ao Tibia Toolkit, acesse a aba <strong>Configurações</strong> e clique em <span class="highlight">Detectar UI</span>. Faça isso com <strong>vida e mana cheias</strong> e com o <strong>minimapa preto</strong>.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-info">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Para usar o Equipar Ring</span>
+          <p>Se você pretende usar o atalho <strong>Equipar Ring</strong> (seção 08), rode o Detectar UI com o <strong>anel removido</strong> do personagem. É nesse momento que o Toolkit memoriza a posição do slot de anel vazio — com o anel equipado o slot não é reconhecido e o recurso fica inativo. Depois de detectar, basta reequipar o anel normalmente.</p>
+        </div>
+      </div>
+
+      <img src="/static/docs/100000010000015C000000962DAC5C95.png" alt="Interface configurada para detecção" class="doc-img" />
+
+      <p>Após rodar Detectar UI, a interface exibirá:</p>
+      <img src="/static/docs/10000000000001310000002C1FAA6DB9.png" alt="6/6 elementos detectados" class="doc-img" />
+      <p class="doc-img-caption"><strong>6/6 elementos detectados</strong> — o Toolkit localizou corretamente todos os elementos necessários para leitura e automação.</p>
+
+      <div class="subsection">
+        <h3>Hotkeys e Healing</h3>
+        <p>Em <span class="highlight">Hotkeys</span>, configure as teclas de acordo com sua preferência. Em <span class="highlight">Healing</span>, defina os thresholds de vida e mana para o auto-heal. Clique em <strong>Salvar hotkeys</strong> e <strong>Salvar healing</strong> ao terminar.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section" id="sec-scripts">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Criando scripts de hunt</h2>
+      </div>
+
+      <p>Scripts definem o caminho que o bot percorre pela hunt, passando de box em box. No momento ainda não há lógica automática para subir e descer buracos — para escadas, marque as flags normalmente na sequência de movimento desejada.</p>
+
+      <ol class="steps">
+        <li>Abra o Tibia e vá até a hunt que deseja mapear</li>
+        <li>Conte quantas <span class="highlight">box</span> (pontos de parada) existem no percurso</li>
+        <li>No Tibia Toolkit, acesse a aba <span class="highlight">Scripts</span> e use o <strong>Script Maker</strong> para criar o script</li>
+        <li>Após criar, edite as flags diretamente na seção abaixo do editor:</li>
+      </ol>
+
+      <img src="/static/docs/10000000000003610000027A5C6C8792.png" alt="Editor de scripts" class="doc-img" />
+
+      <div class="callout callout-info">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Wait</span>
+          <p>O parâmetro <code>wait</code> define o tempo de espera (em segundos) entre uma box e outra — calibre de acordo com o tempo que seu personagem leva para percorrer o trecho.</p>
+        </div>
+      </div>
+
+      <p>Faça as marcações no minimapa na ordem em que deseja que o personagem pare em cada box. Abaixo, um exemplo de hunt mapeada:</p>
+      <img src="/static/docs/100000000000006B0000006E1B6651CC.png" alt="Exemplo de hunt mapeada" class="doc-img" />
+      <p class="doc-img-caption">Exemplo de hunt com flags marcadas no minimapa na ordem do percurso.</p>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section" id="sec-iniciar">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Iniciando o bot</h2>
+      </div>
+
+      <p>Com tudo configurado — UI detectada, hotkeys salvas e script criado — siga os passos abaixo para iniciar:</p>
+
+      <ol class="steps">
+        <li>Leve seu personagem até a hunt e posicione-o de forma que as <span class="highlight">flags estejam visíveis no minimapa</span></li>
+        <li>Na aba <span class="highlight">Principal</span>, selecione o script criado no menu suspenso</li>
+        <li>Ative as opções desejadas (auto-heal, utani hur, exeta res, etc.)</li>
+        <li>Clique em <span class="highlight">Iniciar</span></li>
+      </ol>
+
+      <div class="callout callout-tip">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Dica</span>
+          <p>Acompanhe a aba <strong>Logs</strong> para verificar se o bot está funcionando corretamente e identificar possíveis erros.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Tibia visível</span>
+          <p>O Tibia Toolkit precisa que a janela do Tibia esteja <strong>visível na tela</strong> durante toda a execução. Não minimize nem cubra a janela do jogo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6 — Alertas -->
+    <div class="section" id="sec-alertas">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Alertas</h2>
+      </div>
+
+      <p>O painel <span class="highlight">Alertas</span> fica no Dashboard, ao lado dos Atalhos Rápidos. Cada alerta é uma condição que o bot monitora durante a execução — quando dispara, o Toolkit toca um bipe e imprime uma linha destacada no painel de Logs no formato <code>[ALERTA] &lt;motivo&gt;</code>.</p>
+
+      <div class="callout callout-info">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="callout-body">
+          <p>Os alertas <strong>não param o bot automaticamente</strong> — eles servem para chamar sua atenção. As configurações ficam salvas em <code>settings.json</code> e persistem entre sessões.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Como funcionam</h3>
+        <p><strong>Som:</strong> bipe curto (senóide 880 Hz, 220 ms) tocado via áudio do sistema — PulseAudio no Linux, MMSystem no Windows.</p>
+        <p><strong>Log:</strong> linha com prefixo <code>[ALERTA]</code> no painel inferior, junto com o motivo do disparo.</p>
+        <p><strong>Cooldown:</strong> 5 segundos entre disparos do mesmo alerta para evitar repetição em loop.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Vida baixa</h3>
+        <p>Dispara quando a barra de HP cai abaixo do percentual configurado. Útil pra perceber quando o personagem está em risco mesmo que o auto-heal não dê conta. Configure o threshold no controle <code>[-] valor% HP [+]</code> ao lado da checkbox.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Tempo de hunt</h3>
+        <p>Dispara uma vez quando o tempo de execução atinge o limite configurado em horas. Útil pra não deixar o bot rodando a madrugada inteira por engano.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Bugs de execução</h3>
+        <p>Dispara quando uma das threads do bot encerrou com uma <strong>exceção não tratada</strong> — ou seja, o bot crashou de verdade. Quando isso acontece, um traceback completo (arquivo e linha) fica registrado na aba Logs.</p>
+        <p>Exemplo típico: o mouse foi para um canto da tela e o pyautogui acionou a proteção <code>FailSafeException</code>, derrubando a thread de combate.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Bot travado</h3>
+        <p>Dispara quando uma das threads do bot <strong>parou de progredir por 30 segundos</strong> sem ter crashado. Geralmente significa que uma chamada do sistema gráfico (X11/captura de tela) bloqueou silenciosamente.</p>
+        <p>Diferente do bug de execução, aqui <em>não tem traceback</em> — a thread ainda está viva, só presa em uma chamada que nunca retorna. O Toolkit detecta via heartbeat: cada thread principal sinaliza que está viva a cada iteração, e a UI marca como travada quando o último sinal passou de 30s.</p>
+
+        <div class="callout callout-tip">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Bug × Travado</span>
+            <p>Os dois cobrem cenários diferentes. <strong>Bug de execução</strong> = crashou com erro identificável (tem traceback). <strong>Bot travado</strong> = congelou sem erro (não tem traceback). Por isso ambos vêm habilitados por padrão.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Em desenvolvimento</h3>
+        <p>Estes alertas aparecem desabilitados (<span class="highlight">em breve</span>) e serão liberados em versões futuras:</p>
+        <p><strong>Player na tela:</strong> detectar entrada de outro jogador na battle list — incluirá way-out automático para área segura e notificação no Telegram.</p>
+        <p><strong>Poções acabando:</strong> OCR na quantidade de poções no inventário, alertando antes de esgotar.</p>
+        <p><strong>Personagem morreu:</strong> detecta a tela de morte do Tibia via template-matching.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 7 — Combate -->
+    <div class="section" id="sec-combate">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Combate (Kill Box)</h2>
+      </div>
+
+      <p>Enquanto o bot estiver em uma box, ele executa o <strong>kill_box</strong> — um loop que continua até a battle list ficar vazia ou o timeout de 200 segundos ser atingido.</p>
+
+      <div class="subsection">
+        <h3>Como funciona o loop</h3>
+        <ol class="steps">
+          <li>Lê quantas criaturas há na battle list</li>
+          <li>Se zero, aguarda 0,8 s e confere de novo — só sai se continuar vazio</li>
+          <li>Dispara <strong>Utito/Utamo Tempo</strong> e <strong>Utura</strong> se os cooldowns tiverem passado</li>
+          <li>Pressiona <code>space</code> (ataque automático)</li>
+          <li>Executa o combo de magias adequado ao número de criaturas</li>
+          <li>Checa a battle list entre cada spell e sai assim que limpa</li>
+        </ol>
+      </div>
+
+      <div class="subsection">
+        <h3>Combo AoE — 3 ou mais criaturas</h3>
+        <p>Usado quando há 3 ou mais criaturas na battle list, ou quando o <strong>Combo Single Target</strong> está desativado:</p>
+        <table class="req-table">
+          <thead><tr><th>Ordem</th><th>Ação</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>space</code></td><td>Ataque automático (seleção de alvo)</td></tr>
+            <tr><td>2</td><td>Exeta/Amp Res <em>(opcional)</em></td><td>Reduz resistência do alvo se habilitado</td></tr>
+            <tr><td>3</td><td>Exori</td><td>Magia de área básica</td></tr>
+            <tr><td>4</td><td>Exori Gran</td><td>Magia de área forte</td></tr>
+            <tr><td>5</td><td>Exori</td><td>Segunda passagem</td></tr>
+            <tr><td>6</td><td>Exori Mas</td><td>Magia de área máxima</td></tr>
+          </tbody>
+        </table>
+        <p>Entre cada spell há um intervalo aleatório de 2,0 a 2,5 segundos. O Exeta/Amp Res é pressionado antes de cada spell se estiver habilitado.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Combo Single Target — 1 ou 2 criaturas</h3>
+        <p>Ativado quando o <strong>Combo Single Target</strong> está marcado nos Atalhos Rápidos <em>e</em> há no máximo 2 criaturas na battle list. Substitui o AoE para poupar mana e priorizar dano concentrado:</p>
+        <table class="req-table">
+          <thead><tr><th>Ordem</th><th>Ação</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><code>space</code></td><td>Ataque automático (seleção de alvo)</td></tr>
+            <tr><td>2</td><td>Exeta/Amp Res <em>(opcional)</em></td><td>Reduz resistência do alvo se habilitado</td></tr>
+            <tr><td>3</td><td>Exori Gran Ico</td><td>Magia single-target forte</td></tr>
+            <tr><td>4</td><td><code>space</code></td><td>Re-seleção de alvo (necessário antes do Exori Min)</td></tr>
+            <tr><td>5</td><td>Exeta/Amp Res <em>(opcional)</em></td><td></td></tr>
+            <tr><td>6</td><td>Exori Min</td><td>Magia single-target secundária</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-tip">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Troca automática de combo</span>
+            <p>O combo é escolhido no início de cada iteração do loop. Se havia 3 criaturas e duas morreram durante o combate, na próxima iteração o bot já usa o combo single-target automaticamente — sem precisar parar o bot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 8 — Atalhos Rápidos -->
+    <div class="section" id="sec-atalhos">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Atalhos Rápidos</h2>
+      </div>
+
+      <p>Os Atalhos Rápidos ficam na aba <span class="highlight">Principal</span> e controlam comportamentos opcionais do bot. Cada um pode ser ativado ou desativado antes de iniciar — as configurações não são salvas entre sessões.</p>
+
+      <div class="subsection">
+        <h3>Utani Hur</h3>
+        <p>Pressiona a hotkey de <strong>Utani Hur</strong> antes de cada clique de navegação no minimapa. Útil em hunts onde o personagem precisa de velocidade extra para chegar à próxima box no tempo configurado no waypoint.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Utito / Utamo Tempo</h3>
+        <p>Pressiona a hotkey configurada durante o combate a cada <strong>10 a 11 segundos aleatórios</strong> (para evitar padrão previsível). Compatível tanto com Utito Tempo (EK — frenzy) quanto com Utamo Tempo (outras vocações — proteção mágica).</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Utura</h3>
+        <p>Pressiona a hotkey de <strong>Utura</strong> (proteção física) durante o combate a cada <strong>60 a 70 segundos aleatórios</strong>, respeitando a duração natural do feitiço.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Equipar Ring</h3>
+        <p>Durante o combate, o bot verifica o slot de anel: quando ele fica <strong>vazio</strong> (o anel expirou ou quebrou), pressiona a hotkey de <strong>Subir Ring</strong> para reequipar. A checagem só acontece em combate, com um intervalo mínimo entre tentativas para não martelar a tecla caso o anel tenha acabado na backpack.</p>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Requer detecção com o anel removido</span>
+            <p>Configure a hotkey <strong>Subir Ring</strong> na aba Configurações e rode o <strong>Detectar UI com o anel removido</strong> do personagem (veja a seção 03) — é assim que o Toolkit aprende a posição do slot. Sem isso, o atalho fica inativo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Smart Skip (skip box com &gt; 1 criatura)</h3>
+        <p>Quando ativado, o bot <strong>pula o kill_box</strong> em waypoints onde há menos de 2 criaturas na battle list no momento da chegada. Útil para hunts onde as criaturas demoram a spawnar — ao invés de ficar parado esperando, o bot segue para a próxima box e volta depois.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Exeta / Amp Res</h3>
+        <p>Pressiona a hotkey de <strong>Exeta Res</strong> ou <strong>Exeta Amp Res</strong> antes de cada spell do combo, reduzindo a resistência do alvo. Quando ativado junto com Utito/Utamo Tempo, o bot aguarda um breve intervalo (2,0–2,5 s) entre o Utito e o Exeta para respeitar o cooldown da magia.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Combo Single Target (≤ 2 criaturas)</h3>
+        <p>Altera o ciclo de magias de ataque quando há <strong>1 ou 2 criaturas</strong> na battle list. Em vez do combo AoE (Exori → Exori Gran → Exori → Exori Mas), o bot usa <strong>Exori Gran Ico</strong> e <strong>Exori Min</strong> — magias de dano concentrado single-target.</p>
+        <p>Configure as hotkeys de <span class="highlight">Exori Gran Ico</span> e <span class="highlight">Exori Min</span> na aba Configurações antes de ativar esta opção.</p>
+        <div class="callout callout-warning">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Com 3 ou mais criaturas</span>
+            <p>Se a battle list tiver 3 ou mais criaturas, o bot volta ao combo AoE automaticamente, mesmo com esta opção ativada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 9 — Hotkeys e Healing -->
+    <div class="section" id="sec-hotkeys">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>Hotkeys e Healing</h2>
+      </div>
+
+      <p>As hotkeys e thresholds ficam na aba <span class="highlight">Configurações</span>. Configure antes de iniciar o bot e clique em <strong>Salvar</strong> após qualquer alteração.</p>
+
+      <div class="subsection">
+        <h3>Hotkeys</h3>
+        <p>Cada ação tem uma tecla associada que o bot pressiona automaticamente. Deve ser a mesma tecla configurada no Tibia para aquela magia ou item.</p>
+        <table class="req-table">
+          <thead><tr><th>Ação</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td>Exori</td><td>Magia de área — combo AoE</td></tr>
+            <tr><td>Exori Gran</td><td>Magia de área forte — combo AoE</td></tr>
+            <tr><td>Exori Mas</td><td>Magia de área máxima — combo AoE</td></tr>
+            <tr><td>Exori Gran Ico</td><td>Magia single-target forte — combo Single Target</td></tr>
+            <tr><td>Exori Min</td><td>Magia single-target secundária — combo Single Target</td></tr>
+            <tr><td>Exeta Amp / Exeta Res</td><td>Debuff de resistência — usado com o atalho <em>Exeta/Amp Res</em></td></tr>
+            <tr><td>Exura Ico</td><td>Cura single-target — auto-heal</td></tr>
+            <tr><td>Pot de Vida</td><td>Poção de vida — auto-heal</td></tr>
+            <tr><td>Pot de Mana</td><td>Poção de mana — auto-heal</td></tr>
+            <tr><td>Utito / Utamo Tempo</td><td>Buff de combate — atalho <em>Utito/Utamo Tempo</em></td></tr>
+            <tr><td>Utani Hur</td><td>Buff de velocidade — atalho <em>Utani Hur</em></td></tr>
+            <tr><td>Loot</td><td>Coleta de loot após cada kill_box</td></tr>
+            <tr><td>Utura</td><td>Proteção física — atalho <em>Utura</em></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <h3>Healing (thresholds)</h3>
+        <p>Define o percentual de HP ou MP a partir do qual o bot usa cada item de cura. O bot monitora vida e mana a <strong>10 Hz</strong> (10 vezes por segundo) numa thread separada do cavebot.</p>
+        <table class="req-table">
+          <thead><tr><th>Item</th><th>Usar quando</th></tr></thead>
+          <tbody>
+            <tr><td>Pot de Vida</td><td>HP ≤ valor configurado (%)</td></tr>
+            <tr><td>Exura Ico</td><td>HP ≤ valor configurado (%)</td></tr>
+            <tr><td>Pot de Mana</td><td>MP ≤ valor configurado (%)</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Prioridade</span>
+            <p>Quando HP e MP estão baixos ao mesmo tempo, o bot cura vida primeiro. Pot de Vida e Exura Ico são independentes — configure thresholds diferentes para usar a poção em emergências e a magia para manutenção contínua.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── TOC direita (populada por JS) ─────────────────────────── -->
+  <aside class="docs-toc" id="docs-toc">
+    <h4>Nesta página</h4>
+    <ul></ul>
+  </aside>
+
+</div>
+
+<footer>
+  Tibia Toolkit &mdash; Dúvidas ou sugestões? Entre em contato.
+</footer>
+
+<script src="/static/docs/docs.js"></script>
+</body>
+</html>

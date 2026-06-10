@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/stats/script.js",
@@ -8,22 +9,6 @@
     {
       "source": "/api/send",
       "destination": "https://api.tibiatoolkit.com.br/api/send"
-    },
-    {
-      "source": "/documentacao",
-      "destination": "https://api.tibiatoolkit.com.br/documentacao"
-    },
-    {
-      "source": "/termos",
-      "destination": "https://api.tibiatoolkit.com.br/termos"
-    },
-    {
-      "source": "/privacidade",
-      "destination": "https://api.tibiatoolkit.com.br/privacidade"
-    },
-    {
-      "source": "/static/:path*",
-      "destination": "https://api.tibiatoolkit.com.br/static/:path*"
     }
   ]
 }
