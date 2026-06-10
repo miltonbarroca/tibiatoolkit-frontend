@@ -4,6 +4,7 @@ import {
   Check, Shield, Download, Play, ChevronDown, Gift, Zap,
 } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import logo from "./assets/logo.png";
 
 const BACKEND = "https://api.tibiatoolkit.com.br";
@@ -55,6 +56,7 @@ export default function App() {
       <FAQ />
       <Footer />
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
