@@ -38,6 +38,7 @@
       <a href="#sec-combate"   data-target="sec-combate">07 · Combate</a>
       <a href="#sec-atalhos"   data-target="sec-atalhos">08 · Atalhos Rápidos</a>
       <a href="#sec-hotkeys"   data-target="sec-hotkeys">09 · Hotkeys e Healing</a>
+      <a href="#sec-runemaker" data-target="sec-runemaker">10 · Rune Maker</a>
     </nav>
   </aside>
 
@@ -499,6 +500,75 @@
             <p>Quando HP e MP estão baixos ao mesmo tempo, o bot cura vida primeiro. Pot de Vida e Exura Ico são independentes — configure thresholds diferentes para usar a poção em emergências e a magia para manutenção contínua.</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- SECTION 10 — Rune Maker -->
+    <div class="section" id="sec-runemaker">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>Rune Maker</h2>
+      </div>
+
+      <p>O <span class="highlight">Rune Maker</span> é um modo independente do cavebot para produzir runas com o personagem parado no depot ou em outro lugar seguro da cidade. Em vez de caçar, o personagem conjura a runa configurada sempre que tem mana suficiente e come de tempos em tempos para sustentar a produção. O modo tem a própria aba, com botões de <strong>Start</strong> e <strong>Stop</strong> próprios.</p>
+
+      <div class="callout callout-warning">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Não roda junto com o cavebot</span>
+          <p>O Rune Maker e o cavebot são mutuamente exclusivos — ao iniciar um, o outro fica bloqueado. Pare o modo ativo antes de trocar.</p>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Antes de começar</h3>
+        <p>Rode o <strong>Detectar UI</strong> (seção 02) ao menos uma vez — o Rune Maker precisa das barras de vida e mana mapeadas para ler a mana. Depois, na aba <span class="highlight">Configurações</span>, defina as hotkeys abaixo com as mesmas teclas usadas no Tibia.</p>
+        <table class="req-table">
+          <thead><tr><th>Hotkey</th><th>Para quê</th></tr></thead>
+          <tbody>
+            <tr><td>Conjurar Runa</td><td>A magia que conjura a runa (ex.: <em>Adori Vita Vis</em> para Sudden Death)</td></tr>
+            <tr><td>Comida</td><td>Comer para manter a regeneração de soul e mana</td></tr>
+            <tr><td>Subir Ring <em>(opcional)</em></td><td>Reequipar o anel — usada apenas quando <em>Equipar Ring</em> está ligado</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <h3>Como funciona</h3>
+        <p>A cada <strong>20 a 30 segundos</strong> (intervalo aleatório), o Rune Maker lê a sua mana e decide o que fazer:</p>
+        <table class="req-table">
+          <thead><tr><th>Leitura da mana</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td>No threshold ou acima</td><td>Conjura uma runa (um cast por checagem)</td></tr>
+            <tr><td>Abaixo do threshold</td><td>Aguarda — a mana ainda está regenerando</td></tr>
+          </tbody>
+        </table>
+        <p>Em paralelo, a cada <strong>2 a 3 minutos</strong> o personagem come uma vez. A comida não é opcional: sem regeneração ativa não há recuperação de soul, e sem soul não há como conjurar.</p>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Por que a comida importa</span>
+            <p>Cada runa consome mana e <strong>soul points</strong>. O soul regenera devagar e apenas enquanto o personagem está com tempo de regeneração ativo (comendo). Por isso o limite de produção é o soul, não a velocidade do bot: com o soul cheio você emenda várias runas seguidas; depois, a produção acompanha o ritmo lento da regeneração. Mantenha comida na backpack.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Configuração (aba Rune Maker)</h3>
+        <table class="req-table">
+          <thead><tr><th>Opção</th><th>O que faz</th></tr></thead>
+          <tbody>
+            <tr><td>Threshold de mana</td><td>Percentual mínimo de MP para conjurar. Quanto maior, mais cheia a mana precisa estar antes de cada runa.</td></tr>
+            <tr><td>Equipar Ring</td><td>Reequipa o anel quando o slot fica vazio, igual ao atalho do cavebot (veja a seção 08). Requer a hotkey <strong>Subir Ring</strong> e a detecção feita com o anel removido.</td></tr>
+            <tr><td>Soft Boots</td><td>Em breve.</td></tr>
+          </tbody>
+        </table>
+        <p>Diferente dos Atalhos Rápidos do cavebot, as configurações do Rune Maker <strong>ficam salvas</strong> entre sessões.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>Iniciando</h3>
+        <p>Posicione o personagem parado em um lugar seguro, confirme o threshold e clique em <strong>Start</strong> na aba Rune Maker. Para encerrar, clique em <strong>Stop</strong>.</p>
       </div>
     </div>
 
