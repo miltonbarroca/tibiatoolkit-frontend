@@ -3,7 +3,7 @@
 Landing page do [Tibia Toolkit](https://github.com/miltonbarroca/Tibia-Toolkit). Repositório
 separado do monorepo para simplificar o deploy (Vercel + domínio próprio `tibiatoolkit.com.br`).
 
-**Stack:** React 19 + Vite + TypeScript + Sass (SCSS). Sem Tailwind.
+**Stack:** React 19 + Vite + TypeScript + Sass.
 
 ## Desenvolvimento
 
