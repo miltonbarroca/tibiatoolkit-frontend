@@ -294,6 +294,37 @@
       </div>
 
       <div class="subsection">
+        <h3>Player na tela</h3>
+        <p>Toca o alarme quando <strong>outro jogador aparece na tela</strong> — pensado como aviso anti-PK. A detecção usa um <strong>segundo battle</strong> filtrado só pra players: enquanto ele fica vazio nada acontece; quando um player entra (a miniatura do outfit e a barra de HP surgem sobre o fundo cinza), o Toolkit percebe a mudança e dispara.</p>
+        <p>Por enquanto o alerta é <strong>sonoro</strong>; o way-out automático (logout/fuga para área segura) e a notificação no Telegram vêm em versão futura.</p>
+
+        <p><strong>Como configurar:</strong></p>
+        <ol class="steps">
+          <li>No Tibia, abra um <strong>segundo Battle</strong> e, no filtro (ícone de funil), deixe visível <span class="highlight">apenas players</span> — esconda monstros, NPCs e summons. Posicione-o num canto fixo (ex.: extremidade esquerda, longe do battle das criaturas).</li>
+          <li>No Toolkit, vá em <span class="highlight">Configurações</span> e clique em <span class="highlight">Calibrar 2º battle</span>. A tela congela e um quadrado verde acompanha o cursor.</li>
+          <li>Com a lista <strong>vazia</strong>, clique no meio da área onde os players aparecem (o corpo cinza do battle). O recorte capturado fica em <code>conf/battle_players_ref.png</code> — confira que mostra a listinha cinza vazia, e não a barra de título.</li>
+          <li>No painel <span class="highlight">Alertas</span>, marque <span class="highlight">Player na tela</span>.</li>
+          <li>Inicie o bot <strong>num lugar seguro, sem players por perto</strong>: o Toolkit fotografa a caixa vazia ~2&nbsp;s após o start e passa a alertar em cima de qualquer mudança nela.</li>
+        </ol>
+
+        <div class="callout callout-warning">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Comece com a tela limpa</span>
+            <p>A referência é a caixa <strong>no momento do start</strong>. Se já houver um player ali quando você inicia, ele entra na referência e não dispara — só contam as mudanças a partir dali. Por isso comece a hunt em local seguro.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="callout-body">
+            <span class="callout-title">Solo, e mantenha o battle no lugar</span>
+            <p>É feito pra hunt <strong>solo</strong>: em party os membros aparecem como players e o alarme dispararia sem parar. E se você mover a janela do segundo battle depois de calibrar, <strong>recalibre</strong> — a caixa fica fixa na posição calibrada.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
         <h3>Tempo de hunt</h3>
         <p>Dispara uma vez quando o tempo de execução atinge o limite configurado em horas. Útil pra não deixar o bot rodando a madrugada inteira por engano.</p>
       </div>
@@ -321,7 +352,6 @@
       <div class="subsection">
         <h3>Em desenvolvimento</h3>
         <p>Estes alertas aparecem desabilitados (<span class="highlight">em breve</span>) e serão liberados em versões futuras:</p>
-        <p><strong>Player na tela:</strong> detectar entrada de outro jogador na battle list — incluirá way-out automático para área segura e notificação no Telegram.</p>
         <p><strong>Poções acabando:</strong> OCR na quantidade de poções no inventário, alertando antes de esgotar.</p>
         <p><strong>Personagem morreu:</strong> detecta a tela de morte do Tibia via template-matching.</p>
       </div>
