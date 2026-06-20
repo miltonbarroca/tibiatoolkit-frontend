@@ -36,9 +36,10 @@
       <a href="#sec-iniciar"    data-target="sec-iniciar">05 · Iniciar o bot</a>
       <a href="#sec-alertas"    data-target="sec-alertas">06 · Alertas</a>
       <a href="#sec-combate"   data-target="sec-combate">07 · Combate</a>
-      <a href="#sec-atalhos"   data-target="sec-atalhos">08 · Atalhos Rápidos</a>
-      <a href="#sec-hotkeys"   data-target="sec-hotkeys">09 · Hotkeys e Healing</a>
-      <a href="#sec-runemaker" data-target="sec-runemaker">10 · Rune Maker</a>
+      <a href="#sec-postura"   data-target="sec-postura">08 · Postura de Combate</a>
+      <a href="#sec-atalhos"   data-target="sec-atalhos">09 · Atalhos Rápidos</a>
+      <a href="#sec-hotkeys"   data-target="sec-hotkeys">10 · Hotkeys e Healing</a>
+      <a href="#sec-runemaker" data-target="sec-runemaker">11 · Rune Maker</a>
     </nav>
   </aside>
 
@@ -371,7 +372,7 @@
         <ol class="steps">
           <li>Lê quantas criaturas há na battle list</li>
           <li>Se zero, aguarda 0,8 s e confere de novo — só sai se continuar vazio</li>
-          <li>Dispara <strong>Utito/Utamo Tempo</strong> e <strong>Utura</strong> se os cooldowns tiverem passado</li>
+          <li>Dispara <strong>Utura</strong> se o cooldown tiver passado (a postura de combate é assumida uma vez no Start — veja a seção 08)</li>
           <li>Pressiona <code>space</code> (ataque automático)</li>
           <li>Executa o combo de magias adequado ao número de criaturas</li>
           <li>Checa a battle list entre cada spell e sai assim que limpa</li>
@@ -420,10 +421,51 @@
       </div>
     </div>
 
-    <!-- SECTION 8 — Atalhos Rápidos -->
-    <div class="section" id="sec-atalhos">
+    <!-- SECTION 8 — Postura de Combate -->
+    <div class="section" id="sec-postura">
       <div class="section-header">
         <span class="section-num">08</span>
+        <h2>Postura de Combate</h2>
+      </div>
+
+      <p>Em uma atualização do Tibia, <strong>Utito Tempo</strong> e <strong>Utamo Tempo</strong> deixaram de ser buffs temporários e passaram a ser <strong>posturas de batalha</strong>: você assume uma postura <strong>ofensiva</strong> (utito) ou <strong>defensiva</strong> (utamo) e ela permanece ativa até ser trocada ou desativada. As duas são mutuamente exclusivas — só uma por vez.</p>
+
+      <p>O controle fica na aba <span class="highlight">Principal</span>, no painel <span class="highlight">Postura de Combate</span>, logo abaixo dos botões do Cavebot. Marque <span class="highlight">Ativar postura</span> e escolha o lado no seletor:</p>
+
+      <table class="req-table">
+        <thead><tr><th>Postura</th><th>Magia</th><th>Foco</th></tr></thead>
+        <tbody>
+          <tr><td>Ofensiva</td><td>Utito Tempo</td><td>Dano</td></tr>
+          <tr><td>Defensiva</td><td>Utamo Tempo</td><td>Proteção</td></tr>
+        </tbody>
+      </table>
+
+      <div class="subsection">
+        <h3>Como o bot aplica</h3>
+        <p>Ao clicar em <strong>Iniciar</strong>, o bot conjura <strong>uma única vez</strong> a postura escolhida e a mantém pelo resto da hunt. Ele <strong>não reconjura</strong> durante o combate: como a postura é alternada pela própria tecla, apertá-la de novo a desativaria. A escolha é lida no momento do Start e <strong>não fica salva</strong> entre sessões (igual aos Atalhos Rápidos).</p>
+      </div>
+
+      <div class="callout callout-warning">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Comece sem postura ativa</span>
+          <p>Antes de clicar em Iniciar, deixe o personagem <strong>neutro</strong> (nenhuma postura ligada). Como o bot só dá um toque na tecla para entrar na postura, se você já estiver com uma ativa esse toque iria <strong>desativá-la</strong>.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-info">
+        <svg class="callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="callout-body">
+          <span class="callout-title">Defina as duas hotkeys</span>
+          <p>Na aba <span class="highlight">Configurações</span>, configure <strong>Utito Tempo (ofensiva)</strong> e <strong>Utamo Tempo (defensiva)</strong> com as mesmas teclas usadas no Tibia. Sem a hotkey da postura escolhida, o bot não tem o que apertar.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 9 — Atalhos Rápidos -->
+    <div class="section" id="sec-atalhos">
+      <div class="section-header">
+        <span class="section-num">09</span>
         <h2>Atalhos Rápidos</h2>
       </div>
 
@@ -432,11 +474,6 @@
       <div class="subsection">
         <h3>Utani Hur</h3>
         <p>Pressiona a hotkey de <strong>Utani Hur</strong> antes de cada clique de navegação no minimapa. Útil em hunts onde o personagem precisa de velocidade extra para chegar à próxima box no tempo configurado no waypoint.</p>
-      </div>
-
-      <div class="subsection">
-        <h3>Utito / Utamo Tempo</h3>
-        <p>Pressiona a hotkey configurada durante o combate a cada <strong>10 a 11 segundos aleatórios</strong> (para evitar padrão previsível). Compatível tanto com Utito Tempo (EK — frenzy) quanto com Utamo Tempo (outras vocações — proteção mágica).</p>
       </div>
 
       <div class="subsection">
@@ -463,7 +500,7 @@
 
       <div class="subsection">
         <h3>Exeta / Amp Res</h3>
-        <p>Pressiona a hotkey de <strong>Exeta Res</strong> ou <strong>Exeta Amp Res</strong> antes de cada spell do combo, reduzindo a resistência do alvo. Quando ativado junto com Utito/Utamo Tempo, o bot aguarda um breve intervalo (2,0–2,5 s) entre o Utito e o Exeta para respeitar o cooldown da magia.</p>
+        <p>Pressiona a hotkey de <strong>Exeta Res</strong> ou <strong>Exeta Amp Res</strong> antes de cada spell do combo, reduzindo a resistência do alvo.</p>
       </div>
 
       <div class="subsection">
@@ -480,10 +517,10 @@
       </div>
     </div>
 
-    <!-- SECTION 9 — Hotkeys e Healing -->
+    <!-- SECTION 10 — Hotkeys e Healing -->
     <div class="section" id="sec-hotkeys">
       <div class="section-header">
-        <span class="section-num">09</span>
+        <span class="section-num">10</span>
         <h2>Hotkeys e Healing</h2>
       </div>
 
@@ -504,7 +541,8 @@
             <tr><td>Exura Ico</td><td>Cura single-target — auto-heal</td></tr>
             <tr><td>Pot de Vida</td><td>Poção de vida — auto-heal</td></tr>
             <tr><td>Pot de Mana</td><td>Poção de mana — auto-heal</td></tr>
-            <tr><td>Utito / Utamo Tempo</td><td>Buff de combate — atalho <em>Utito/Utamo Tempo</em></td></tr>
+            <tr><td>Utito Tempo (ofensiva)</td><td>Postura de combate ofensiva — veja a seção 08</td></tr>
+            <tr><td>Utamo Tempo (defensiva)</td><td>Postura de combate defensiva — veja a seção 08</td></tr>
             <tr><td>Utani Hur</td><td>Buff de velocidade — atalho <em>Utani Hur</em></td></tr>
             <tr><td>Loot</td><td>Coleta de loot após cada kill_box</td></tr>
             <tr><td>Utura</td><td>Proteção física — atalho <em>Utura</em></td></tr>
@@ -533,10 +571,10 @@
       </div>
     </div>
 
-    <!-- SECTION 10 — Rune Maker -->
+    <!-- SECTION 11 — Rune Maker -->
     <div class="section" id="sec-runemaker">
       <div class="section-header">
-        <span class="section-num">10</span>
+        <span class="section-num">11</span>
         <h2>Rune Maker</h2>
       </div>
 
